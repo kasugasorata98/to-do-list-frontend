@@ -23,4 +23,9 @@ export const ApiService = {
       toDoList: Array<ToDoItem>;
     }>(`${Constants.ENDPOINTS.getList}`);
   },
+  addToList: (title: string) => {
+    return AxiosClient.post<ToDoItem>(Constants.ENDPOINTS.addToList, {
+      title,
+    });
+  },
 };
