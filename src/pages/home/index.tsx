@@ -12,9 +12,9 @@ import { colors } from "@/styles/colors";
 import Text from "@/components/Text";
 import { useEffect, useState } from "react";
 import { ApiService } from "@/api";
-import { ToDoList } from "@/entities/to-do-list.entity";
+import { ToDoItem } from "@/entities/to-do-list.entity";
 const Home = () => {
-  const [list, setList] = useState<Array<ToDoList>>([]);
+  const [list, setList] = useState<Array<ToDoItem>>([]);
   useEffect(() => {
     ApiService.getList()
       .then(({ data }) => {
@@ -41,7 +41,7 @@ const Home = () => {
           placeholder="Add a task..."
         />
       </InputGroup>
-      {list.map((item: any) => {
+      {list.map((item: ToDoItem) => {
         return (
           <HStack key={item._id} width={"100%"}>
             <Checkbox

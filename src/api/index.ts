@@ -1,5 +1,5 @@
 import { Constants } from "@/constants";
-import { ToDoList } from "@/entities/to-do-list.entity";
+import { ToDoItem } from "@/entities/to-do-list.entity";
 import AxiosClient from "@/lib/AxiosClient";
 
 export const ApiService = {
@@ -20,7 +20,7 @@ export const ApiService = {
   },
   getList: () => {
     return AxiosClient.get<{
-      toDoList: Array<ToDoList>;
+      toDoList: Array<ToDoItem>;
     }>(`${Constants.ENDPOINTS.getList}`);
   },
 };
