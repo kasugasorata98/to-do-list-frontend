@@ -1,3 +1,4 @@
+import { LocalStorageHandler } from "@/utils/LocalStorageHandler";
 import axios from "axios";
 
 const AxiosClient = () => {
@@ -5,6 +6,9 @@ const AxiosClient = () => {
     baseURL: "http://localhost:3001",
   });
   axiosInstance.interceptors.request.use((request) => {
+    request.headers.Authorization = `Bearer ${
+      LocalStorageHandler.getUserToken()?.access_token
+    }`;
     return request;
   });
   axiosInstance.interceptors.response.use((response) => {
