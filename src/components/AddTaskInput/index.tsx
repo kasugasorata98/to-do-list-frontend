@@ -28,8 +28,10 @@ const AddTask: React.FC<{
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             onEnterPressed && onEnterPressed(text);
+            setText("");
           }
         }}
+        value={text}
         onChange={(e) => {
           setText(e.target.value);
         }}
