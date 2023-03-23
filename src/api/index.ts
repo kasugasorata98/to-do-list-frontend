@@ -28,4 +28,11 @@ export const ApiService = {
       title,
     });
   },
+  updateList: (title: string, isDone: boolean, toDoListId: string) => {
+    return AxiosClient.patch<any>(Constants.ENDPOINTS.updateList, {
+      title,
+      isDone,
+      toDoListId,
+    });
+  },
 };

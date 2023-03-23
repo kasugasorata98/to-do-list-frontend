@@ -4,5 +4,6 @@ export const Constants = {
     authorize: "/api/v1/account/authorize",
     getList: "/api/v1/list",
     addToList: "/api/v1/list",
+    updateList: "/api/v1/list",
   },
 };

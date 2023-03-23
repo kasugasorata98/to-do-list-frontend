@@ -1,17 +1,32 @@
 import { colors } from "@/styles/colors";
 import { SettingsIcon } from "@chakra-ui/icons";
 import { HStack, Checkbox } from "@chakra-ui/react";
-import { CSSProperties } from "react";
+import { CSSProperties, useState } from "react";
 import Text from "@/components/Text";
 import { ToDoItem } from "@/entities/to-do-list.entity";
+import { ApiService } from "@/api";
 const ToDo: React.FC<{
   style?: CSSProperties | undefined;
   item: ToDoItem;
 }> = ({ item }) => {
+  const [isDone, setIsDone] = useState<boolean>(item.isDone);
+  const updateList = (title: string, isDone: boolean, toDoListId: string) => {
+    ApiService.updateList(title, isDone, toDoListId)
+      .then(({ data }) => {
+        console.log(data);
+        setIsDone(isDone);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <HStack key={item._id} width={"100%"}>
       <Checkbox
-        checked={item.isDone}
+        onChange={(e) => {
+          updateList(item.title, e.target.checked, item._id);
+        }}
+        isChecked={isDone}
         style={{
           alignSelf: "start",
           marginTop: 4,
