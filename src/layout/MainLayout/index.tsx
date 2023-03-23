@@ -1,13 +1,21 @@
 import { colors } from "@/styles/colors";
 import { Box } from "@chakra-ui/react";
 
-import React, { ReactNode } from "react";
+import React, { CSSProperties, ReactNode } from "react";
 
 const MainLayout: React.FC<{
   children: ReactNode;
-}> = ({ children }) => {
+  style?: CSSProperties;
+}> = ({ children, style }) => {
   return (
-    <Box bg={colors.grey} display={"flex"}>
+    <Box
+      height={"100%"}
+      bg={colors.grey}
+      display={"flex"}
+      justifyContent="center"
+      alignItems={"center"}
+      style={{ ...style }}
+    >
       {children}
     </Box>
   );
