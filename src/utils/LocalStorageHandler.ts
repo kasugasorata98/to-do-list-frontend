@@ -16,4 +16,7 @@ export const LocalStorageHandler = {
     if (tokens) return JSON.parse(tokens);
     else return null;
   },
+  removeUserToken: () => {
+    localStorage.removeItem("tokens");
+  },
 };
