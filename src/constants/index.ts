@@ -1,6 +1,6 @@
 export const Constants = {
   ENDPOINTS: {
-    getAuthLink:
-      "/api/v1/account/getAuthLink?callback=http://localhost:3000/callback",
+    getAuthLink: "/api/v1/account/getAuthLink",
+    authorize: "/api/v1/account/authorize",
   },
 };
