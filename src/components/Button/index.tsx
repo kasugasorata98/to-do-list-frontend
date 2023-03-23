@@ -3,7 +3,7 @@ import { Button as ChakraButton } from "@chakra-ui/react";
 import { colors } from "@/styles/colors";
 
 const Button: React.FC<{
-  style?: CSSProperties | undefined;
+  style?: CSSProperties;
   children?: ReactNode;
   onClick?: () => void;
 }> = ({ style, children, onClick }) => {
