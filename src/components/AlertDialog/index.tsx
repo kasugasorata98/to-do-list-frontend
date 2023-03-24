@@ -1,4 +1,3 @@
-import { colors } from "@/styles/colors";
 import {
   AlertDialog as ChakraAlertDialog,
   AlertDialogBody,
@@ -8,9 +7,8 @@ import {
   AlertDialogHeader,
   AlertDialogOverlay,
   Button,
-  useDisclosure,
 } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import React from "react";
 
 const AlertDialog: React.FC<{
   isOpen: boolean;

@@ -5,7 +5,6 @@ import {
   Input,
   Modal as ChakraModal,
   ModalBody,
-  ModalCloseButton,
   ModalContent,
   ModalFooter,
   ModalHeader,

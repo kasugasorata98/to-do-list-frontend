@@ -2,7 +2,7 @@ import { ApiService } from "@/api";
 import { LocalStorageHandler } from "@/utils/LocalStorageHandler";
 import { useToast } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 const Callback = () => {
   const router = useRouter();

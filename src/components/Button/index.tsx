@@ -1,6 +1,7 @@
 import { CSSProperties, ReactNode } from "react";
 import { Button as ChakraButton } from "@chakra-ui/react";
 import { colors } from "@/styles/colors";
+import React from "react";
 
 const Button: React.FC<{
   style?: CSSProperties;

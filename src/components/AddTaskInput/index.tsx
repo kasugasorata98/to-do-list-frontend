@@ -1,7 +1,7 @@
 import { colors } from "@/styles/colors";
 import { DragHandleIcon } from "@chakra-ui/icons";
 import { InputGroup, InputLeftElement, Input } from "@chakra-ui/react";
-import { CSSProperties, useState } from "react";
+import React, { CSSProperties, useState } from "react";
 
 const AddTask: React.FC<{
   style?: CSSProperties;

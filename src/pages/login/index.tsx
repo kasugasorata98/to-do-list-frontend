@@ -2,8 +2,8 @@ import { colors } from "@/styles/colors";
 import { Box, Heading } from "@chakra-ui/react";
 import Text from "@/components/Text";
 import Button from "@/components/Button";
-import MainLayout from "@/layout/MainLayout";
 import { ApiService } from "@/api";
+import React from "react";
 
 const Login = () => {
   const handleSignIn = () => {

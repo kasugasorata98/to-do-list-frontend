@@ -7,7 +7,12 @@ import {
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
-import { CSSProperties, Dispatch, SetStateAction, useState } from "react";
+import React, {
+  CSSProperties,
+  Dispatch,
+  SetStateAction,
+  useState,
+} from "react";
 import Text from "@/components/Text";
 import { ToDoItem } from "@/entities/to-do-list.entity";
 import { ApiService } from "@/api";

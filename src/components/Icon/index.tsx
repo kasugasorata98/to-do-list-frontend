@@ -1,6 +1,6 @@
 import { colors } from "@/styles/colors";
 import { Icon as ChakraIcon } from "@chakra-ui/react";
-import { CSSProperties } from "react";
+import React, { CSSProperties } from "react";
 import { IconType } from "react-icons";
 import * as _chakra_ui_system from "@chakra-ui/system";
 import * as _chakra_ui_icon from "@chakra-ui/icon";

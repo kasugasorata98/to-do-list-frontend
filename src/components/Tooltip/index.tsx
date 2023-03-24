@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode } from "react";
+import React, { CSSProperties, ReactNode } from "react";
 import { Tooltip as ChakraTooltip } from "@chakra-ui/react";
 import { colors } from "@/styles/colors";
 
