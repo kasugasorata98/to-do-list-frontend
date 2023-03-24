@@ -1,10 +1,25 @@
 import { colors } from "@/styles/colors";
-import { SettingsIcon } from "@chakra-ui/icons";
-import { HStack, Checkbox } from "@chakra-ui/react";
+import {
+  ChevronDownIcon,
+  DeleteIcon,
+  EditIcon,
+  SettingsIcon,
+} from "@chakra-ui/icons";
+import {
+  HStack,
+  Checkbox,
+  Button,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+} from "@chakra-ui/react";
 import { CSSProperties, useState } from "react";
 import Text from "@/components/Text";
 import { ToDoItem } from "@/entities/to-do-list.entity";
 import { ApiService } from "@/api";
+import { BiDotsHorizontalRounded } from "react-icons/bi";
+import Icon from "../Icon";
 const ToDo: React.FC<{
   style?: CSSProperties | undefined;
   item: ToDoItem;
@@ -40,13 +55,15 @@ const ToDo: React.FC<{
       >
         {item.title}
       </Text>
-      <SettingsIcon
-        _hover={{
-          cursor: "pointer",
-        }}
-        onClick={() => console.log}
-        color={colors.textColor}
-      />
+      <Menu>
+        <MenuButton>
+          <Icon as={BiDotsHorizontalRounded} />
+        </MenuButton>
+        <MenuList>
+          <MenuItem icon={<EditIcon />}>Edit</MenuItem>
+          <MenuItem icon={<DeleteIcon />}>Delete</MenuItem>
+        </MenuList>
+      </Menu>
     </HStack>
   );
 };
