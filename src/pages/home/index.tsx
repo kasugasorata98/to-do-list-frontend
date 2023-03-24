@@ -1,5 +1,5 @@
 import withAuth from "@/utils/withAuth";
-import { Box, Tooltip, VStack } from "@chakra-ui/react";
+import { Box, HStack, Tooltip, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { ApiService } from "@/api";
 import { ToDoItem } from "@/entities/to-do-list.entity";
@@ -9,6 +9,7 @@ import { GoSignOut } from "react-icons/go";
 import { LocalStorageHandler } from "@/utils/LocalStorageHandler";
 import Icon from "@/components/Icon";
 import { Constants } from "@/constants";
+import { DeleteIcon } from "@chakra-ui/icons";
 
 const Home = () => {
   const [list, setList] = useState<Array<ToDoItem>>([]);
@@ -32,6 +33,17 @@ const Home = () => {
       });
   };
 
+  const deleteAll = () => {
+    ApiService.deleteList("DELETE_ALL")
+      .then(({ data }) => {
+        console.log(data);
+        setList([]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const signOut = () => {
     LocalStorageHandler.removeUserToken();
     window.location.href = Constants.ENDPOINTS.logout;
@@ -44,9 +56,22 @@ const Home = () => {
           <Icon as={GoSignOut} onClick={signOut} />
         </Box>
       </Tooltip>
-      <AddTask onEnterPressed={(text) => addToList(text)} />
+      <HStack>
+        <AddTask onEnterPressed={(text) => addToList(text)} />
+        <Tooltip label="Delete all">
+          <Box display={list.length > 0 ? "flex" : "none"}>
+            <Icon
+              style={{
+                alignSelf: "center",
+              }}
+              as={DeleteIcon}
+              onClick={deleteAll}
+            />
+          </Box>
+        </Tooltip>
+      </HStack>
       {list.map((item: ToDoItem) => {
-        return <ToDo key={item._id} item={item} />;
+        return <ToDo key={item._id} item={item} setList={setList} />;
       })}
     </VStack>
   );

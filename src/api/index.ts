@@ -35,4 +35,11 @@ export const ApiService = {
       toDoListId,
     });
   },
+  deleteList: (flag: "DELETE_ONE" | "DELETE_ALL", toDoListId?: string) => {
+    let query: any = { flag };
+    if (toDoListId) query.toDoListId = toDoListId;
+    return AxiosClient.delete<any>(
+      `${Constants.ENDPOINTS.list}?${new URLSearchParams(query)}`
+    );
+  },
 };

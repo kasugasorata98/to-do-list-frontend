@@ -2,11 +2,16 @@ import { colors } from "@/styles/colors";
 import { Icon as ChakraIcon } from "@chakra-ui/react";
 import { CSSProperties } from "react";
 import { IconType } from "react-icons";
+import * as _chakra_ui_system from "@chakra-ui/system";
+import * as _chakra_ui_icon from "@chakra-ui/icon";
 
 const Icon: React.FC<{
   style?: CSSProperties;
   onClick?: () => void;
-  as?: IconType | undefined;
+  as?:
+    | IconType
+    | _chakra_ui_system.ComponentWithAs<"svg", _chakra_ui_icon.IconProps>
+    | undefined;
 }> = ({ style, onClick, as }) => {
   return (
     <ChakraIcon
