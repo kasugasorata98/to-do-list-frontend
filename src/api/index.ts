@@ -21,15 +21,15 @@ export const ApiService = {
   getList: () => {
     return AxiosClient.get<{
       toDoList: Array<ToDoItem>;
-    }>(`${Constants.ENDPOINTS.getList}`);
+    }>(`${Constants.ENDPOINTS.list}`);
   },
   addToList: (title: string) => {
-    return AxiosClient.post<ToDoItem>(Constants.ENDPOINTS.addToList, {
+    return AxiosClient.post<ToDoItem>(Constants.ENDPOINTS.list, {
       title,
     });
   },
   updateList: (title: string, isDone: boolean, toDoListId: string) => {
-    return AxiosClient.patch<any>(Constants.ENDPOINTS.updateList, {
+    return AxiosClient.patch<any>(Constants.ENDPOINTS.list, {
       title,
       isDone,
       toDoListId,
