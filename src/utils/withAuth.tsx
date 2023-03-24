@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { LocalStorageHandler } from "./LocalStorageHandler";
 
 const withAuth = (WrappedComponent: React.ComponentType<any>) => {
