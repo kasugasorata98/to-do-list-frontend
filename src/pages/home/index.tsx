@@ -10,9 +10,11 @@ import { LocalStorageHandler } from "@/utils/LocalStorageHandler";
 import Icon from "@/components/Icon";
 import { Constants } from "@/constants";
 import { DeleteIcon } from "@chakra-ui/icons";
+import AlertDialog from "@/components/AlertDialog";
 
 const Home = () => {
   const [list, setList] = useState<Array<ToDoItem>>([]);
+  const [openDialog, setOpenDialog] = useState<boolean>(false);
   useEffect(() => {
     ApiService.getList()
       .then(({ data }) => {
@@ -41,6 +43,9 @@ const Home = () => {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setOpenDialog(false);
       });
   };
 
@@ -51,6 +56,26 @@ const Home = () => {
 
   return (
     <VStack paddingBlock={20}>
+      <AlertDialog
+        isOpen={openDialog}
+        onClose={() => {
+          setOpenDialog(false);
+        }}
+        header="Delete all tasks?"
+        description="This will delete all tasks"
+        confirm={{
+          title: "Confirm",
+          onClick: () => {
+            deleteAll();
+          },
+        }}
+        cancel={{
+          title: "Cancel",
+          onClick: () => {
+            setOpenDialog(false);
+          },
+        }}
+      />
       <Tooltip label="Sign out">
         <Box alignSelf={"end"} position={"absolute"} right={5} top={5}>
           <Icon as={GoSignOut} onClick={signOut} />
@@ -65,7 +90,7 @@ const Home = () => {
                 alignSelf: "center",
               }}
               as={DeleteIcon}
-              onClick={deleteAll}
+              onClick={() => setOpenDialog(true)}
             />
           </Box>
         </Tooltip>
