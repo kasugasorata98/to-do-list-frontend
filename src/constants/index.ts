@@ -5,5 +5,7 @@ export const Constants = {
     getList: "/api/v1/list",
     addToList: "/api/v1/list",
     updateList: "/api/v1/list",
+    logout:
+      "https://to-do-list.auth.ap-southeast-1.amazoncognito.com/logout?client_id=1i35b8g3p4vo2vm1vrd7dgpmnt&logout_uri=http://localhost:3000/login",
   },
 };
