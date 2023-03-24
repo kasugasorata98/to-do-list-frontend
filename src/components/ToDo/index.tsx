@@ -30,11 +30,15 @@ const ToDo: React.FC<{
           const newList = [...prevList];
           const index = newList.findIndex((list) => list._id === toDoListId);
           newList[index].isDone = isDone;
+          newList[index].title = title;
           return newList;
         });
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setEditOverlay(false);
       });
   };
 
