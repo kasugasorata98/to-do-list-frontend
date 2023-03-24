@@ -22,16 +22,24 @@ const AxiosClient = () => {
       return response;
     },
     async (err: AxiosError) => {
-      if (err.response?.status === 401) {
+      if (
+        err &&
+        err.config &&
+        err.response?.status === 401 &&
+        !err.config.headers["retry"]
+      ) {
+        err.config.headers["retry"] = true;
         try {
           const tokens = LocalStorageHandler.getUserToken();
-          const { data } = await ApiService.refreshToken(tokens!.refresh_token);
-          LocalStorageHandler.setUserToken(
-            data.access_token,
-            tokens!.refresh_token
-          );
-          err.config!.headers["Authorization"] = `Bearer ${data.access_token}`;
-          if (err.config) {
+          if (tokens) {
+            const { data } = await ApiService.refreshToken(
+              tokens.refresh_token
+            );
+            LocalStorageHandler.setUserToken(
+              data.access_token,
+              tokens.refresh_token
+            );
+            err.config.headers["Authorization"] = `Bearer ${data.access_token}`;
             axiosInstance(err.config);
           }
         } catch (err) {
