@@ -1,5 +1,5 @@
 import withAuth from "@/utils/withAuth";
-import { Box, HStack, Tooltip, VStack } from "@chakra-ui/react";
+import { Box, HStack, Tooltip, useToast, VStack } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { ApiService } from "@/api";
 import { ToDoItem } from "@/entities/to-do-list.entity";
@@ -11,10 +11,13 @@ import Icon from "@/components/Icon";
 import { Constants } from "@/constants";
 import { DeleteIcon } from "@chakra-ui/icons";
 import AlertDialog from "@/components/AlertDialog";
+import { type } from "os";
+import { AxiosError } from "axios";
 
 const Home = () => {
   const [list, setList] = useState<Array<ToDoItem>>([]);
   const [openDialog, setOpenDialog] = useState<boolean>(false);
+  const toast = useToast();
   useEffect(() => {
     ApiService.getList()
       .then(({ data }) => {
@@ -22,6 +25,10 @@ const Home = () => {
       })
       .catch((err) => {
         console.log(err);
+        toast({
+          title: "Something Went Wrong",
+          status: "error",
+        });
       });
   }, []);
 
@@ -29,9 +36,17 @@ const Home = () => {
     ApiService.addToList(title)
       .then(({ data }) => {
         setList([...list, data]);
+        toast({
+          title: "Task has been added into the list",
+          status: "success",
+        });
       })
-      .catch((err) => {
+      .catch((err: AxiosError) => {
         console.log(err);
+        toast({
+          title: "Something Went Wrong",
+          status: "error",
+        });
       });
   };
 
@@ -40,9 +55,17 @@ const Home = () => {
       .then(({ data }) => {
         console.log(data);
         setList([]);
+        toast({
+          title: "All task has been deleted",
+          status: "success",
+        });
       })
       .catch((err) => {
         console.log(err);
+        toast({
+          title: "Something Went Wrong",
+          status: "error",
+        });
       })
       .finally(() => {
         setOpenDialog(false);

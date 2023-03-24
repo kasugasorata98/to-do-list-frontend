@@ -6,6 +6,7 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
+  useToast,
 } from "@chakra-ui/react";
 import React, {
   CSSProperties,
@@ -25,6 +26,7 @@ const ToDo: React.FC<{
   item: ToDoItem;
   setList: Dispatch<SetStateAction<ToDoItem[]>>;
 }> = ({ item, setList, ...rest }) => {
+  const toast = useToast();
   const [editOverlay, setEditOverlay] = useState<boolean>(false);
 
   const updateList = (title: string, isDone: boolean, toDoListId: string) => {
@@ -38,9 +40,17 @@ const ToDo: React.FC<{
           newList[index].title = title;
           return newList;
         });
+        toast({
+          title: "Task has been updated",
+          status: "success",
+        });
       })
       .catch((err) => {
         console.log(err);
+        toast({
+          title: "Something Went Wrong",
+          status: "error",
+        });
       })
       .finally(() => {
         setEditOverlay(false);
@@ -55,9 +65,17 @@ const ToDo: React.FC<{
           const newList = [...prevList];
           return newList.filter((list) => list._id !== _id);
         });
+        toast({
+          title: "Task has been deleted",
+          status: "success",
+        });
       })
       .catch((err) => {
         console.log(err);
+        toast({
+          title: "Something Went Wrong",
+          status: "error",
+        });
       });
   };
 
