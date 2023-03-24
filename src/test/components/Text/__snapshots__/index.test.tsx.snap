@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text component matches snapshot 1`] = `
+<div>
+  <p
+    class="chakra-text css-0"
+    style="color: rgb(226, 234, 241);"
+  >
+    Hello world
+  </p>
+</div>
+`;
