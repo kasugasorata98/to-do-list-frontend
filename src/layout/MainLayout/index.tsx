@@ -13,7 +13,6 @@ const MainLayout: React.FC<{
       bg={colors.grey}
       display={"flex"}
       justifyContent="center"
-      alignItems={"center"}
       style={{ ...style }}
     >
       {children}
