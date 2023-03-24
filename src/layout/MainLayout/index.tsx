@@ -6,7 +6,7 @@ import React, { CSSProperties, ReactNode } from "react";
 const MainLayout: React.FC<{
   children: ReactNode;
   style?: CSSProperties;
-}> = ({ children, style }) => {
+}> = ({ children, style, ...rest }) => {
   return (
     <Box
       height={"100%"}
@@ -14,6 +14,7 @@ const MainLayout: React.FC<{
       display={"flex"}
       justifyContent="center"
       style={{ ...style }}
+      {...rest}
     >
       {children}
     </Box>
