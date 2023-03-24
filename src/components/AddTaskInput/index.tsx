@@ -7,7 +7,7 @@ const AddTask: React.FC<{
   style?: CSSProperties;
   containerStyle?: CSSProperties;
   onEnterPressed?: (text: string) => void;
-}> = ({ style, containerStyle, onEnterPressed }) => {
+}> = ({ style, containerStyle, onEnterPressed, ...rest }) => {
   const [text, setText] = useState<string>("");
   return (
     <InputGroup
@@ -15,6 +15,7 @@ const AddTask: React.FC<{
       borderColor={colors.dividerColor}
       borderRadius={8}
       background={colors.dividerColor}
+      {...rest}
     >
       <InputLeftElement
         pointerEvents="none"
