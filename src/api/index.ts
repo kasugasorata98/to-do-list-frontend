@@ -42,4 +42,15 @@ export const ApiService = {
       `${Constants.ENDPOINTS.list}?${new URLSearchParams(query)}`
     );
   },
+  refreshToken: (refreshToken: string) => {
+    return AxiosClient.post<{
+      access_token: string;
+      refresh_token: string;
+      id_token: string;
+      token_type: string;
+      expires_in: number;
+    }>(Constants.ENDPOINTS.refreshToken, {
+      refreshToken,
+    });
+  },
 };
