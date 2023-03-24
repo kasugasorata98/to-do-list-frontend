@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="css-ielbyb"
+  >
+    <h2
+      class="chakra-heading css-13mo70e"
+    >
+      Login
+    </h2>
+    <p
+      class="chakra-text css-0"
+      style="color: rgb(226, 234, 241); margin-bottom: 4px;"
+    >
+      Please sign in to continue.
+    </p>
+    <button
+      class="chakra-button css-4xx2wk"
+      style="color: rgb(60, 66, 73);"
+      type="button"
+    >
+      Login with Google
+    </button>
+  </div>
+</DocumentFragment>
+`;
