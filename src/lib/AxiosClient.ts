@@ -40,7 +40,7 @@ const AxiosClient = () => {
               tokens.refresh_token
             );
             err.config.headers["Authorization"] = `Bearer ${data.access_token}`;
-            axiosInstance(err.config);
+            return axiosInstance(err.config);
           }
         } catch (err) {
           LocalStorageHandler.removeUserToken();
