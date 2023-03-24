@@ -1,6 +1,6 @@
 # To Do List Frontend
 
-## Installation
+## Guide
 
 ```bash
 npm install
@@ -19,8 +19,10 @@ The App has the following features:
 - Updating to-do items on the list
 - Deleting to-do items from the list
 - Deleting all to-do items from the list
-- Unit Tests
-  This product has unit tests for the following components:
+
+## Unit Tests
+
+This product has unit tests for the following components:
 
 - Header
 - MainLayout
