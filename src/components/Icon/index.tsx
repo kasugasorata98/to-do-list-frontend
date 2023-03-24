@@ -12,7 +12,7 @@ const Icon: React.FC<{
     | IconType
     | _chakra_ui_system.ComponentWithAs<"svg", _chakra_ui_icon.IconProps>
     | undefined;
-}> = ({ style, onClick, as }) => {
+}> = ({ style, onClick, as, ...rest }) => {
   return (
     <ChakraIcon
       _hover={{
@@ -24,6 +24,7 @@ const Icon: React.FC<{
       boxSize="5"
       color={colors.textColor}
       as={as}
+      {...rest}
     />
   );
 };

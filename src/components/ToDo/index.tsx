@@ -24,7 +24,7 @@ const ToDo: React.FC<{
   style?: CSSProperties | undefined;
   item: ToDoItem;
   setList: Dispatch<SetStateAction<ToDoItem[]>>;
-}> = ({ item, setList }) => {
+}> = ({ item, setList, ...rest }) => {
   const [editOverlay, setEditOverlay] = useState<boolean>(false);
 
   const updateList = (title: string, isDone: boolean, toDoListId: string) => {
@@ -62,7 +62,7 @@ const ToDo: React.FC<{
   };
 
   return (
-    <HStack key={item._id} width={"100%"}>
+    <HStack key={item._id} width={"100%"} {...rest}>
       <Checkbox
         onChange={(e) => {
           updateList(item.title, e.target.checked, item._id);

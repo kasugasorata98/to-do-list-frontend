@@ -5,13 +5,14 @@ import { colors } from "@/styles/colors";
 const Text: React.FC<{
   style?: CSSProperties | undefined;
   children?: ReactNode;
-}> = ({ style, children }) => {
+}> = ({ style, children, ...rest }) => {
   return (
     <ChakraText
       style={{
         color: colors.textColor,
         ...style,
       }}
+      {...rest}
     >
       {children}
     </ChakraText>

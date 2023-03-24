@@ -7,7 +7,7 @@ const Button: React.FC<{
   style?: CSSProperties;
   children?: ReactNode;
   onClick?: () => void;
-}> = ({ style, children, onClick }) => {
+}> = ({ style, children, onClick, ...rest }) => {
   return (
     <ChakraButton
       style={{
@@ -15,6 +15,7 @@ const Button: React.FC<{
         ...style,
       }}
       onClick={onClick}
+      {...rest}
     >
       {children}
     </ChakraButton>

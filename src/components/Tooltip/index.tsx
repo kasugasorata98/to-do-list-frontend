@@ -7,7 +7,7 @@ const Tooltip: React.FC<{
   children?: ReactNode;
   onClick?: () => void;
   label?: string;
-}> = ({ style, children, onClick, label }) => {
+}> = ({ style, children, onClick, label, ...rest }) => {
   return (
     <ChakraTooltip
       style={{
@@ -16,6 +16,7 @@ const Tooltip: React.FC<{
       }}
       label={label}
       onClick={onClick}
+      {...rest}
     >
       {children}
     </ChakraTooltip>

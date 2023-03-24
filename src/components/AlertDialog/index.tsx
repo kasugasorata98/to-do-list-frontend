@@ -23,7 +23,7 @@ const AlertDialog: React.FC<{
     title?: string;
     onClick: () => void;
   };
-}> = ({ isOpen, header, description, confirm, cancel, onClose }) => {
+}> = ({ isOpen, header, description, confirm, cancel, onClose, ...rest }) => {
   const cancelRef = React.useRef<any>();
 
   return (
@@ -33,6 +33,7 @@ const AlertDialog: React.FC<{
       onClose={onClose}
       isOpen={isOpen}
       isCentered
+      {...rest}
     >
       <AlertDialogOverlay background={"transparent"} />
 

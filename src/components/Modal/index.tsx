@@ -36,6 +36,7 @@ const Modal: React.FC<{
   onClose,
   placeholder,
   value = "",
+  ...rest
 }) => {
   const initialRef = React.useRef<any>(null);
   const finalRef = React.useRef<any>(null);
@@ -46,6 +47,7 @@ const Modal: React.FC<{
       finalFocusRef={finalRef}
       isOpen={isOpen}
       onClose={onClose}
+      {...rest}
     >
       <ModalOverlay background="transparent" />
       <ModalContent>
