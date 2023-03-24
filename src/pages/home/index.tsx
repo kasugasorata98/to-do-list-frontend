@@ -81,7 +81,7 @@ const Home = () => {
           <Icon as={GoSignOut} onClick={signOut} />
         </Box>
       </Tooltip>
-      <HStack>
+      <HStack width={"100%"}>
         <AddTask onEnterPressed={(text) => addToList(text)} />
         <Tooltip label="Delete all">
           <Box display={list.length > 0 ? "flex" : "none"}>

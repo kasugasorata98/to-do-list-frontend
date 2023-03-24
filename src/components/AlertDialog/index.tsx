@@ -1,3 +1,4 @@
+import { colors } from "@/styles/colors";
 import {
   AlertDialog as ChakraAlertDialog,
   AlertDialogBody,
@@ -35,7 +36,7 @@ const AlertDialog: React.FC<{
       isOpen={isOpen}
       isCentered
     >
-      <AlertDialogOverlay />
+      <AlertDialogOverlay background={"transparent"} />
 
       <AlertDialogContent>
         <AlertDialogHeader>{header}</AlertDialogHeader>

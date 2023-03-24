@@ -13,12 +13,15 @@ import { ToDoItem } from "@/entities/to-do-list.entity";
 import { ApiService } from "@/api";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import Icon from "../Icon";
+import Modal from "../Modal";
 
 const ToDo: React.FC<{
   style?: CSSProperties | undefined;
   item: ToDoItem;
   setList: Dispatch<SetStateAction<ToDoItem[]>>;
 }> = ({ item, setList }) => {
+  const [editOverlay, setEditOverlay] = useState<boolean>(false);
+
   const updateList = (title: string, isDone: boolean, toDoListId: string) => {
     ApiService.updateList(title, isDone, toDoListId)
       .then(({ data }) => {
@@ -65,16 +68,44 @@ const ToDo: React.FC<{
       <Text
         style={{
           width: "100%",
+          marginTop: -2,
         }}
       >
         {item.title}
       </Text>
+      <Modal
+        title="Task"
+        placeholder="Enter task title"
+        header="Edit Title"
+        value={item.title}
+        isOpen={editOverlay}
+        onClose={() => {
+          setEditOverlay(false);
+        }}
+        cancel={{
+          title: "Cancel",
+          onClick: () => {},
+        }}
+        confirm={{
+          title: "Save",
+          onClick: (text) => {
+            updateList(text, item.isDone, item._id);
+          },
+        }}
+      />
       <Menu>
         <MenuButton>
           <Icon as={BiDotsHorizontalRounded} />
         </MenuButton>
         <MenuList>
-          <MenuItem icon={<EditIcon />}>Edit</MenuItem>
+          <MenuItem
+            onClick={() => {
+              setEditOverlay(true);
+            }}
+            icon={<EditIcon />}
+          >
+            Edit
+          </MenuItem>
           <MenuItem onClick={() => deleteOne(item._id)} icon={<DeleteIcon />}>
             Delete
           </MenuItem>
